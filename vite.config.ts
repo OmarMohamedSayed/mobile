@@ -51,8 +51,20 @@
     },
     build: {
       target: 'esnext',
-      outDir: 'build',
+      outDir: 'dist',
+      minify: 'esbuild',
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
     },
+    esbuild: {
+      logOverride: { 'this-is-undefined-in-esm': 'silent' },
+      legalComments: 'none',
+      logLevel: 'silent',
+    },
+    logLevel: 'warn',
     server: {
       port: 3000,
       open: true,
